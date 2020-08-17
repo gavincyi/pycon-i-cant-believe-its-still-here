@@ -121,16 +121,6 @@ it activated the RLP functionality in the new SMARS but the Power Peg in the old
 
 ---
 
-# Myth
-
-- Lack of diligence and attitude?
-
-- Lack of incentive?
-
-- Lack of development time and resource?
-
----
-
 # Hard to get the stains off?
 
 - Uncertainty and undefinite business value to clean technical debt
@@ -187,6 +177,17 @@ def old_hello_world():
     return print("Hello world!")
 ```
 
+```bash
+(bash) hello-world-app
+Hello world!
+DeprecationWarning: The function "old_hello_world" will be deprecated in version 2.0.0
+```
+
+---
+
+# Auto-deprecator - Warning
+
+
 - Specify the current version by the package version and the migrated function
 
 ```python
@@ -201,17 +202,9 @@ def old_hello_world():
 
 ---
 
-# Auto-deprecator - Warning and Expired
+# Auto-deprecator - Expired
 
-- User case
-
-```bash
-(bash) hello-world-app
-Hello world!
-DeprecationWarning: The function "old_hello_world" will be deprecated in version 2.0.0
-```
-
-- Downstream test case
+- Test the expired stage scenario
 
 ```bash
 (bash) DEPRECATED_VERSION=2.0.0 hello-world-app
