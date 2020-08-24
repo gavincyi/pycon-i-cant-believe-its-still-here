@@ -11,13 +11,14 @@ class: center, middle
 
 # My Background
 
-- AXA IM Chorus Ltd is a quantitative asset management firm.
+- Working as a principal quant developer in AXA IM Chorus Ltd, which
+is a quantitative asset management firm.
 
-- Develop in Python
+- Python is the major language to use in Chorus
 
-- Research in Python
+- Worked in Fidessa as a C++ developer
 
-- Manage the portfolio in Python
+- Personal Python open source projects: [BitcoinExchangeFH](https://github.com/BitcoinExchangeFH/BitcoinExchangeFH), [LightMatchingEngine](https://github.com/gavincyi/LightMatchingEngine)
 
 ---
 
@@ -31,9 +32,9 @@ class: center, middle
 
 - Market making more than 19,000 US securities in more than 21 billion dollars average daily volume
 
-- A technical incident on August 1, 2012 blew up the company
+- $1.4 billion revenue and $115.2 million net income in 2011
 
-- The incident costed Knight $440 million
+- A technical incident on August 1, 2012 costed Knight $440 million
 
 - Finally, Knight was acquired by a rival, Getco LLC
 
@@ -72,6 +73,10 @@ it activated the RLP functionality in the new SMARS but the Power Peg in the old
 ---
 
 # Deployment Chaos
+
+.center[
+<img src="out/rlp_deployment.png" width=50%>
+]
 
 - In the week before go-live, an engineer manually deployed the new RLP code in SMARS to 7 out of 8 production servers
 
