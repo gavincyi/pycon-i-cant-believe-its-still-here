@@ -110,33 +110,39 @@ it activated the RLP functionality in the new SMARS but the Power Peg in the old
 
 ---
 
-# Lesson to learn
+# Ninja way to clean up the dead code
 
-- Regularly clean up the dead code
+- Devote time for debt reduction and refactoring, e.g. 10% - 20% in every sprint
 
-> a) Use version control smartly, for example in git
+- Use version control smartly, for example in git
 
 >> `git diff -G<keyword>`
 
 >> `git log --after <date> --until <date>`
 
-> b) Devote time for debt reduction and refactoring
-
 - Automated Testing and Test automation
 
 ---
 
-# Hard to get the stains off?
+# Imitation Learning
 
-- Uncertainty and undefinite business value to clean technical debt
+- Django
 
-- Unclear usage from the clients and downstream processes on the existing application
+ * [Set a deprecation timeline](https://docs.djangoproject.com/en/dev/internals/deprecation/)
 
-- Missing tools / systematic approach to remove unused codes
+ * Test automation - Always show the deprecation warnings in unit testing
+
+ >> `PYTHONWARNINGS=always pytest tests --capture=no`
+
+- NumPy / scikit-learn: Add warning on the function docstring
+
+- Numba: [Deprecation Notice in documentation](https://numba.pydata.org/numba-doc/latest/reference/deprecation.html)
+
+- Tensorflow: Add compatibility API (e.g. `tf.compat.v1` and `tf.compat.v2`)
 
 ---
 
-# Approach - Planning and Warning
+# Approach - Warning
 
 - Alerts users and developers on the deprecation plan
 
@@ -144,19 +150,15 @@ it activated the RLP functionality in the new SMARS but the Power Peg in the old
 
 - Documentation / Enhancement proposal can help draw the timeline
 
-.center[
-<img src="out/nep_29.png" width=70%>
-###### [NEP-29 Recommend Python and Numpy version support as a community policy standard](https://numpy.org/neps/nep-0029-deprecation_policy.html)
-]
-
 - [Semantic Versioning](https://semver.org/) - MAJOR version when you make incompatible API changes
-
 
 ---
 
 # Approach - Expired and Cleaning
 
 - Expired stage throws an exception on the application level if the function is called
+
+- Provide a procedure for the users to work around in the expired stage
 
 - Cleaning stage removes the deprecation part from the source code
 
@@ -234,23 +236,6 @@ $ auto-deprecate hello_world.py --version 2.1.0
 
 <img src="out/auto_deprecate_diff_comment.png" width=90%>
 
-]
-
----
-
-# Frequent rewrites
-
-.center[
-"Most software at Google gets rewritten every few years"
-
-"Software that is a few years old was designed around an older set of requirements and is
-typically not designed in a way that is optimal for current requirements."
-
-"Rewriting code cuts away all the unnecessary accumulated complexity that was addressing requirements which are no longer so important"
-]
-
-.right[
-#### [Software Engineering at Google, Fergus Henderson](https://arxiv.org/ftp/arxiv/papers/1702/1702.01715.pdf)
 ]
 
 ---
