@@ -11,10 +11,14 @@ class: center, middle
 
 # My Background
 
+.center[
+<img src="out/profile.jpg" width=30%>
+]
+
 - Working as a principal quant developer in AXA IM Chorus Ltd, which
 is a quantitative asset management firm.
 
-- Python is the major language to use in Chorus
+- Major language: Python
 
 - Worked in Fidessa as a C++ developer
 
