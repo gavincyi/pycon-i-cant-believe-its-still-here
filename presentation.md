@@ -183,7 +183,9 @@ it activated the RLP functionality in the new SMARS but the Power Peg in the old
 ```python
 from auto_deprecator import deprecate
 
-@deprecate(expiry='2.0.0', current='1.9.0')
+from hello_world import __version__
+
+@deprecate(expiry='2.0.0', current=__version__)
 def old_hello_world():
     return print("Hello world!")
 ```
@@ -191,37 +193,44 @@ def old_hello_world():
 ```bash
 (bash) hello-world-app
 Hello world!
-DeprecationWarning: The function "old_hello_world" will be deprecated in version 2.0.0
+DeprecationWarning: Function "old_hello_world" will be deprecated in version 2.0.0
 ```
 
 ---
 
 # Auto-deprecator - Warning
 
-
 - Specify the current version by the package version and the migrated function
 
 ```python
 from auto_deprecator import deprecate
 
-from hello_world import __version__
 
-@deprecate(expiry='2.0.0', current=__version__, relocate='hello_world')
+@deprecate(expiry='2.0.0', version_module='hello_world', relocate='hello_world')
 def old_hello_world():
     return 'hello world'
+```
+
+```bash
+DeprecationWarning: Function "old_hello_world" will be deprecated on version 2.0.0. Please use function / method "hello_world"
 ```
 
 ---
 
 # Auto-deprecator - Expired
 
-- Test the expired stage scenario
-
 ```bash
-(bash) DEPRECATED_VERSION=2.0.0 hello-world-app
+(bash) hello-world-app
 Traceback (most recent call last):
  ...
- RuntimeError: The function "old_hello_world" is deprecated in version 2.0.0
+ RuntimeError: Function "old_hello_world" is deprecated in version 2.0.0
+```
+
+Workaround of the exception in the production environment
+
+
+```bash
+(bash) DEPRECATED_VERSION=1.9.0 hello-world-app
 ```
 
 ---
@@ -244,12 +253,6 @@ $ auto-deprecate hello_world.py --version 2.1.0
 
 ---
 
-### Reference
-
-- https://www.henricodolfing.com/2019/06/project-failure-case-study-knight-capital.html
-
----
-
 class: center, middle
 
 ### If you are interested to the project __auto-deprecator__, please visit [https://github.com/auto-deprecator/auto-deprecator](https://github.com/auto-deprecator/auto-deprecator)
@@ -260,3 +263,8 @@ class: center, middle
 
 ### Linkedin: [Gavin, Ying In Chan](https://www.linkedin.com/in/gavin-ying-in-chan-43b00127/)
 
+---
+
+### Reference
+
+- https://www.henricodolfing.com/2019/06/project-failure-case-study-knight-capital.html
