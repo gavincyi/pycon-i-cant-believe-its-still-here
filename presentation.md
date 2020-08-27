@@ -18,7 +18,7 @@ class: center, middle
 - Working as a principal quant developer in AXA IM Chorus Ltd, which
 is a quantitative asset management firm.
 
-- Major language: Python
+- Python as a major language
 
 - Worked in Fidessa as a C++ developer
 
@@ -148,13 +148,18 @@ it activated the RLP functionality in the new SMARS but the Power Peg in the old
 
 # Approach - Warning
 
-- Alerts users and developers on the deprecation plan
-
-- Requires planning ahead on the support timeline
-
-- Documentation / Enhancement proposal can help draw the timeline
+- Documentation / Enhancement proposal: Alerts users and developers on the deprecation plan
 
 - [Semantic Versioning](https://semver.org/) - MAJOR version when you make incompatible API changes
+
+- Use `DeprecationWarning` - [PEP-565](https://www.python.org/dev/peps/pep-0565/#reference-implementation)
+
+- Integrate with testing - `pytest ... -W error::DeprecationWarning`
+
+.center[
+<img src="out/pytest-warning.png" width=70%>
+<img src="out/pytest-error.png" width=70%>
+]
 
 ---
 
@@ -212,25 +217,37 @@ def old_hello_world():
 ```
 
 ```bash
-DeprecationWarning: Function "old_hello_world" will be deprecated on version 2.0.0. Please use function / method "hello_world"
+DeprecationWarning: Function "old_hello_world" will be deprecated on version 2.0.0. 
+Please use function / method "hello_world"
 ```
 
 ---
 
 # Auto-deprecator - Expired
 
+Workaround of the exception in the production environment
+
 ```bash
+(bash) hello-world-app --version
+2.0.0
 (bash) hello-world-app
 Traceback (most recent call last):
  ...
  RuntimeError: Function "old_hello_world" is deprecated in version 2.0.0
+(bash) DEPRECATE_VERSION=1.9.0 hello-world-app
+Hello world!
 ```
 
-Workaround of the exception in the production environment
-
+It also means you can test the expired stage even the future version
+is not yet released.
 
 ```bash
-(bash) DEPRECATED_VERSION=1.9.0 hello-world-app
+(bash) hello-world-app --version
+1.9.0
+(bash) DEPRECATE_VERSION=2.0.0 hello-world-app
+Traceback (most recent call last):
+ ...
+ RuntimeError: Function "old_hello_world" is deprecated in version 2.0.0
 ```
 
 ---
